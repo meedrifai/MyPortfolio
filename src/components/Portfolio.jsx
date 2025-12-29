@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  ChevronDown,
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
   Code,
   Database,
   Brain,
@@ -17,36 +15,15 @@ import {
   BarChart3,
   Cpu,
   Globe,
-  Sparkles,
-  TrendingUp,
 } from "lucide-react";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("hero");
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,8 +72,6 @@ const Portfolio = () => {
       ],
       tech: ["TensorFlow", "React", "Flutter", "Python", "FastAPI"],
       impact: "🏆 Jury's Favorite Award at OpportunAI Hackathon",
-      icon: <Heart className="w-6 h-6" />,
-      color: "from-red-500 to-pink-500",
     },
     {
       id: 2,
@@ -113,8 +88,6 @@ const Portfolio = () => {
       ],
       tech: ["n8n", "Python", "JavaScript", "REST APIs"],
       impact: "Production system serving enterprise clients",
-      icon: <Zap className="w-6 h-6" />,
-      color: "from-yellow-500 to-orange-500",
     },
     {
       id: 3,
@@ -131,8 +104,6 @@ const Portfolio = () => {
       ],
       tech: ["Spring Boot", "ReactJS", "PostgreSQL", "WebSocket"],
       impact: "Addressing critical mental health accessibility",
-      icon: <Shield className="w-6 h-6" />,
-      color: "from-blue-500 to-purple-500",
     },
     {
       id: 4,
@@ -149,185 +120,45 @@ const Portfolio = () => {
       ],
       tech: ["Java", "Spring Boot", "MySQL", "React"],
       impact: "Serving major industrial operations",
-      icon: <BarChart3 className="w-6 h-6" />,
-      color: "from-green-500 to-teal-500",
     },
   ];
 
   const skills = {
     Programming: {
       items: ["Java", "Python", "JavaScript"],
-      icon: <Code className="w-6 h-6" />,
-      color: "from-blue-400 to-blue-600",
+      icon: <Code className="w-5 h-5" />,
     },
     Frameworks: {
       items: ["Spring Boot", "ReactJS", "Next.js", "FastAPI", "Flutter"],
-      icon: <Globe className="w-6 h-6" />,
-      color: "from-purple-400 to-purple-600",
+      icon: <Globe className="w-5 h-5" />,
     },
     Databases: {
       items: ["MySQL", "PostgreSQL", "Firebase"],
-      icon: <Database className="w-6 h-6" />,
-      color: "from-green-400 to-green-600",
+      icon: <Database className="w-5 h-5" />,
     },
     "AI/ML & Cloud": {
       items: ["TensorFlow", "Scikit-learn", "OpenAI", "Docker", "Kubernetes"],
-      icon: <Brain className="w-6 h-6" />,
-      color: "from-pink-400 to-pink-600",
+      icon: <Brain className="w-5 h-5" />,
     },
     Tools: {
       items: ["n8n", "REST APIs", "Git", "Agile/Scrum"],
-      icon: <Cpu className="w-6 h-6" />,
-      color: "from-orange-400 to-orange-600",
+      icon: <Cpu className="w-5 h-5" />,
     },
   };
 
   const achievements = [
-    {
-      title: "Oracle AI Certified Foundations Associate",
-      year: "2025",
-      icon: <Award className="w-5 h-5" />,
-    },
-    {
-      title: "Oracle Java Certified Foundations Associate",
-      year: "2024",
-      icon: <Award className="w-5 h-5" />,
-    },
-    {
-      title: "UM6P Advanced Problem-Solving Certificate",
-      year: "2024",
-      icon: <Award className="w-5 h-5" />,
-    },
-    {
-      title: "OpportunAI Hackathon Jury's Favorite Award",
-      year: "2025",
-      icon: <Heart className="w-5 h-5" />,
-    },
+    { title: "Oracle AI Certified Foundations Associate", year: "2025" },
+    { title: "Oracle Java Certified Foundations Associate", year: "2024" },
+    { title: "UM6P Advanced Problem-Solving Certificate", year: "2024" },
+    { title: "OpportunAI Hackathon Jury's Favorite Award", year: "2025" },
   ];
 
   return (
-    <div className="bg-black text-white overflow-x-hidden">
-      <style>
-        {`
-          @keyframes blob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-          }
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-          }
-          @keyframes glow {
-            0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(147, 51, 234, 0.8); }
-          }
-          @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-          }
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .animate-blob {
-            animation: blob 7s infinite;
-          }
-          .animation-delay-2000 {
-            animation-delay: 2s;
-          }
-          .animation-delay-4000 {
-            animation-delay: 4s;
-          }
-          .animate-float {
-            animation: float 10s ease-in-out infinite;
-          }
-          .animate-glow {
-            animation: glow 3s ease-in-out infinite;
-          }
-          .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
-          }
-          .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-          }
-          .animate-spin-slow {
-            animation: spin-slow 20s linear infinite;
-          }
-          .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-          }
-          .perspective-card {
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-          }
-          .perspective-card:hover {
-            transform: translateY(-10px) scale(1.02);
-          }
-        `}
-      </style>
-
-      {/* Animated Background */}
-      <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-
-        <div
-          className="absolute inset-0 opacity-30 transition-all duration-300"
-          style={{
-            background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.15), transparent 50%)`,
-          }}
-        />
-
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-purple-950 opacity-80" />
-      </div>
-
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float opacity-40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 10}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-black/30 border-b border-white/5 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="bg-gray-50 text-gray-900">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-              <div className="relative text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                MR
-              </div>
-            </div>
+            <div className="text-xl font-bold text-blue-600">Mohamed Rifai</div>
             <div className="hidden md:flex space-x-8">
               {["About", "Projects", "Skills", "Contact"].map((item) => (
                 <button
@@ -343,20 +174,13 @@ const Portfolio = () => {
                         : contactRef
                     )
                   }
-                  className={`relative text-sm font-medium transition-all duration-300 group ${
+                  className={`text-sm font-medium transition-colors ${
                     activeSection === item.toLowerCase()
-                      ? "text-blue-400"
-                      : "text-gray-300 hover:text-white"
+                      ? "text-blue-600"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
                   {item}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 ${
-                      activeSection === item.toLowerCase()
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
-                    }`}
-                  ></span>
                 </button>
               ))}
             </div>
@@ -364,528 +188,309 @@ const Portfolio = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center z-10"
+        className="min-h-screen flex items-center justify-center pt-20 px-6"
       >
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div
-            className={`transition-all duration-1000 ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <div className="mb-6">
-              <div className="relative w-40 h-40 mx-auto mb-8 group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 animate-glow"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-spin-slow opacity-20"></div>
-                <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1">
-                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-5xl font-bold">
-                    MR
-                  </div>
-                </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
+              <div className="w-full h-full rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                <img
+                  src="LinkedInProfile.png"
+                  alt="Mohamed Rifai"
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </div>
-
-            <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block hover:scale-105 transition-transform duration-300">
-                Mohamed Rifai
-              </span>
-            </h1>
-
-            <div className="text-xl md:text-2xl text-gray-300 mb-8 space-y-2">
-              <div className="flex items-center justify-center space-x-4 flex-wrap gap-2">
-                <span className="flex items-center space-x-2 hover:text-blue-400 transition-colors group">
-                  <Code className="w-5 h-5 text-blue-400 group-hover:scale-125 transition-transform" />
-                  <span>Software Engineer</span>
-                </span>
-                <span className="text-gray-500">•</span>
-                <span className="flex items-center space-x-2 hover:text-purple-400 transition-colors group">
-                  <Globe className="w-5 h-5 text-purple-400 group-hover:scale-125 transition-transform" />
-                  <span>Full-Stack Developer</span>
-                </span>
-                <span className="text-gray-500">•</span>
-                <span className="flex items-center space-x-2 hover:text-pink-400 transition-colors group">
-                  <Brain className="w-5 h-5 text-pink-400 group-hover:scale-125 transition-transform" />
-                  <span>AI Enthusiast</span>
-                </span>
-              </div>
-            </div>
-
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Building the future through{" "}
-              <span className="text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                AI-powered solutions
-              </span>
-              ,
-              <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors">
-                {" "}
-                enterprise automation
-              </span>
-              , and
-              <span className="text-pink-400 font-semibold hover:text-pink-300 transition-colors">
-                {" "}
-                innovative healthcare technology
-              </span>
-              . Passionate about solving real-world problems with cutting-edge
-              technology.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
-              <button
-                onClick={() => scrollToSection(projectsRef)}
-                className="relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-semibold overflow-hidden group"
-              >
-                <span className="absolute inset-0 shimmer"></span>
-                <span className="relative flex items-center space-x-2 group-hover:scale-105 transition-transform">
-                  <span>View My Work</span>
-                  <Sparkles className="w-4 h-4" />
-                </span>
-              </button>
-              <a
-                href="mailto:rifaii.mohameed@gmail.com"
-                className="relative px-8 py-4 border-2 border-gray-600 rounded-full text-white font-semibold overflow-hidden group"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                <span className="relative">Get In Touch</span>
-              </a>
-            </div>
-
-            <div className="flex justify-center space-x-8">
-              <a
-                href="mailto:rifaii.mohameed@gmail.com"
-                className="group relative"
-              >
-                <div className="absolute -inset-2 bg-blue-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Mail className="relative w-7 h-7 text-gray-400 group-hover:text-blue-400 group-hover:scale-125 transition-all duration-300" />
-              </a>
-              <a href="https://github.com/meedrifai" className="group relative">
-                <div className="absolute -inset-2 bg-purple-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Github className="relative w-7 h-7 text-gray-400 group-hover:text-purple-400 group-hover:scale-125 transition-all duration-300" />
-              </a>
-              <a
-                href="https://linkedin.com/in/mohamed-rifai-2411b8263"
-                className="group relative"
-              >
-                <div className="absolute -inset-2 bg-pink-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Linkedin className="relative w-7 h-7 text-gray-400 group-hover:text-pink-400 group-hover:scale-125 transition-all duration-300" />
-              </a>
             </div>
           </div>
-        </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-gray-400" />
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900">
+            Mohamed Rifai
+          </h1>
+          <p className="text-xl text-gray-600 mb-6">
+            Software Engineer • Full-Stack Developer • AI Enthusiast
+          </p>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+            Building innovative solutions through AI, enterprise automation, and
+            modern web technologies. Passionate about creating impactful
+            software.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
+            <button
+              onClick={() => scrollToSection(projectsRef)}
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              View Projects
+            </button>
+            <a
+              href="mailto:rifaii.mohameed@gmail.com"
+              className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 transition-colors"
+            >
+              Get In Touch
+            </a>
+          </div>
+
+          <div className="flex justify-center space-x-6">
+            <a
+              href="mailto:rifaii.mohameed@gmail.com"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <Mail className="w-6 h-6" />
+            </a>
+            <a
+              href="https://github.com/meedrifai"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <Github className="w-6 h-6" />
+            </a>
+            <a
+              href="https://linkedin.com/in/mohamed-rifai-2411b8263"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section ref={aboutRef} className="relative py-32 z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              About Me
-            </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-          </div>
+      <section ref={aboutRef} className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">
+            About Me
+          </h2>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 fade-in-up">
-              <div className="flex items-center space-x-3 text-gray-300 group hover:text-white transition-colors">
-                <MapPin className="w-6 h-6 text-blue-400 group-hover:scale-125 transition-transform" />
-                <span className="text-lg">Casablanca, Morocco</span>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3 text-gray-600">
+                <MapPin className="w-5 h-5 text-blue-600" />
+                <span>Casablanca, Morocco</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-300 group hover:text-white transition-colors">
-                <Calendar className="w-6 h-6 text-purple-400 group-hover:scale-125 transition-transform" />
-                <span className="text-lg">3+ Years Experience</span>
+              <div className="flex items-center space-x-3 text-gray-600">
+                <Calendar className="w-5 h-5 text-blue-600" />
+                <span>3+ Years Experience</span>
               </div>
 
-              <p className="text-xl text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 I'm a passionate software engineer who believes technology
-                should solve real-world problems. My journey spans from{" "}
-                <span className="text-blue-400 font-semibold">
-                  AI-powered healthcare solutions
-                </span>{" "}
-                to{" "}
-                <span className="text-purple-400 font-semibold">
-                  enterprise automation systems
-                </span>
-                , always focused on creating meaningful impact.
+                should solve real-world problems. My journey spans from
+                AI-powered healthcare solutions to enterprise automation
+                systems, always focused on creating meaningful impact.
               </p>
 
-              <p className="text-xl text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 With expertise in full-stack development and AI integration,
                 I've delivered solutions that serve hundreds of users while
                 maintaining enterprise-grade security and performance standards.
               </p>
+            </div>
 
-              <div className="pt-8">
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center space-x-2">
-                  <Award className="w-6 h-6 text-yellow-400" />
-                  <span>Recent Achievements</span>
-                </h3>
-                <div className="grid gap-4">
-                  {achievements.map((achievement, index) => (
+            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900">
+                Recent Achievements
+              </h3>
+              <div className="space-y-4">
+                {achievements.map((achievement, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start justify-between p-4 bg-white rounded-lg border border-gray-200"
+                  >
+                    <span className="flex-1 text-gray-700">
+                      {achievement.title}
+                    </span>
+                    <span className="text-blue-600 font-semibold ml-4">
+                      {achievement.year}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section ref={projectsRef} className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">
+            Featured Projects
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Real-world solutions that make a difference
+          </p>
+
+          <div className="space-y-8">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-300 transition-colors"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-blue-100 text-blue-600 rounded-lg">
+                    {project.id === 1 ? (
+                      <Heart className="w-5 h-5" />
+                    ) : project.id === 2 ? (
+                      <Zap className="w-5 h-5" />
+                    ) : project.id === 3 ? (
+                      <Shield className="w-5 h-5" />
+                    ) : (
+                      <BarChart3 className="w-5 h-5" />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {project.title}
+                      </h3>
+                      <span className="text-sm text-gray-500">
+                        {project.year}
+                      </span>
+                    </div>
+                    <p className="text-gray-600">{project.subtitle}</p>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 mb-4">{project.description}</p>
+
+                <div className="grid md:grid-cols-2 gap-2 mb-4">
+                  {project.features.map((feature, idx) => (
                     <div
-                      key={index}
-                      className="group flex items-center space-x-4 p-4 rounded-xl glass hover:bg-white/10 transition-all duration-300"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      key={idx}
+                      className="flex items-center space-x-2 text-gray-600"
                     >
-                      <div className="text-yellow-400 group-hover:scale-125 transition-transform">
-                        {achievement.icon}
-                      </div>
-                      <span className="flex-1 text-gray-300 group-hover:text-white transition-colors">
-                        {achievement.title}
-                      </span>
-                      <span className="text-blue-400 font-bold text-lg">
-                        {achievement.year}
-                      </span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                      <span className="text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full border border-gray-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center space-x-2 text-blue-600 font-medium">
+                  <Award className="w-4 h-4" />
+                  <span className="text-sm">{project.impact}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section ref={skillsRef} className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">
+            Technical Expertise
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            A comprehensive toolkit for building scalable solutions
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(skills).map(([category, data]) => (
+              <div
+                key={category}
+                className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                    {data.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {category}
+                  </h3>
+                </div>
+                <div className="space-y-2">
+                  {data.items.map((skill, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center space-x-2 text-gray-700"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                      <span>{skill}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-20"></div>
-              <div className="relative glass rounded-3xl p-8 hover:bg-white/10 transition-all duration-300 perspective-card">
-                <h3 className="text-3xl font-bold text-white mb-8 flex items-center space-x-2">
-                  <Sparkles className="w-8 h-8 text-yellow-400" />
-                  <span>Professional Focus</span>
-                </h3>
-                <div className="space-y-6">
-                  <div className="group flex items-start space-x-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                    <Brain className="w-8 h-8 text-pink-400 flex-shrink-0 group-hover:scale-125 transition-transform" />
-                    <div>
-                      <div className="font-bold text-white text-lg mb-1">
-                        AI & Machine Learning
-                      </div>
-                      <div className="text-gray-400">
-                        Healthcare predictions, automation, chatbots
-                      </div>
-                    </div>
-                  </div>
-                  <div className="group flex items-start space-x-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                    <Globe className="w-8 h-8 text-blue-400 flex-shrink-0 group-hover:scale-125 transition-transform" />
-                    <div>
-                      <div className="font-bold text-white text-lg mb-1">
-                        Full-Stack Development
-                      </div>
-                      <div className="text-gray-400">
-                        Enterprise web apps, cross-platform solutions
-                      </div>
-                    </div>
-                  </div>
-                  <div className="group flex items-start space-x-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
-                    <Zap className="w-8 h-8 text-yellow-400 flex-shrink-0 group-hover:scale-125 transition-transform" />
-                    <div>
-                      <div className="font-bold text-white text-lg mb-1">
-                        Automation & DevOps
-                      </div>
-                      <div className="text-gray-400">
-                        Workflow optimization, containerization
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl border border-white/10">
-                  <div className="text-center">
-                    <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                      85%
-                    </div>
-                    <div className="text-gray-400 font-medium">
-                      AI Model Accuracy
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section ref={projectsRef} className="relative py-32 z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
-              Real-world solutions that make a difference, from AI-powered
-              healthcare to enterprise automation
-            </p>
-          </div>
-
-          <div className="grid gap-10">
-            {projects.map((project, index) => (
-              <div
-                key={project.id}
-                className="group relative perspective-card"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div
-                  className={`absolute -inset-1 bg-gradient-to-r ${project.color} rounded-3xl blur-xl opacity-25 group-hover:opacity-75 transition duration-1000`}
-                ></div>
-                <div className="relative glass rounded-3xl p-8 hover:bg-white/10 transition-all duration-300 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl"></div>
-
-                  <div className="relative flex flex-col lg:flex-row gap-8">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-4 mb-6">
-                        <div
-                          className={`p-4 rounded-2xl bg-gradient-to-r ${project.color} text-white shadow-2xl group-hover:scale-110 transition-transform`}
-                        >
-                          {project.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-3xl font-bold text-white mb-1">
-                            {project.title}
-                          </h3>
-                          <p className="text-gray-400 text-lg">
-                            {project.subtitle} • {project.year}
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                        {project.description}
-                      </p>
-
-                      <div className="grid md:grid-cols-2 gap-4 mb-6">
-                        {project.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group"
-                          >
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover:scale-150 transition-transform"></div>
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-4 py-2 text-sm font-medium bg-white/5 text-gray-300 rounded-full border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center space-x-2 text-yellow-400 font-semibold">
-                        <Award className="w-5 h-5" />
-                        <span>{project.impact}</span>
-                      </div>
-                    </div>
-
-                    <div className="lg:w-80">
-                      <div className="glass rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all">
-                        <div className="space-y-4">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-400">Status</span>
-                            <span className="flex items-center space-x-2 text-green-400 font-semibold">
-                              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                              <span>Live</span>
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-400">Category</span>
-                            <span className="text-blue-400 font-semibold">
-                              {project.id === 1
-                                ? "Healthcare AI"
-                                : project.id === 2
-                                ? "Enterprise Automation"
-                                : project.id === 3
-                                ? "Healthcare Platform"
-                                : "Enterprise System"}
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-400">Impact</span>
-                            <span className="flex items-center space-x-1 text-purple-400 font-semibold">
-                              <TrendingUp className="w-4 h-4" />
-                              <span>High</span>
-                            </span>
-                          </div>
-
-                          <div className="pt-4 border-t border-white/10">
-                            <button className="w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center space-x-2 group">
-                              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                              <span>View Details</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section ref={skillsRef} className="relative py-32 z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Technical Expertise
-            </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 to-blue-500 mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
-              A comprehensive toolkit for building scalable, intelligent, and
-              impactful solutions
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(skills).map(([category, data], index) => (
-              <div
-                key={category}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 glass p-8 hover:scale-105 hover:border-white/20 transition-all duration-300 perspective-card"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="absolute -inset-20 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"></div>
-
-                <div className="relative">
-                  <div
-                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${data.color} text-white mb-6 group-hover:scale-110 transition-transform shadow-lg`}
-                  >
-                    {data.icon}
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-6">
-                    {category}
-                  </h3>
-
-                  <div className="space-y-3">
-                    {data.items.map((skill, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center space-x-3 text-gray-300 group-hover:text-white transition-colors"
-                      >
-                        <div
-                          className={`w-2 h-2 rounded-full bg-gradient-to-r ${data.color}`}
-                        ></div>
-                        <span className="text-lg">{skill}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
 
-          <div className="mt-20 text-center">
-            <div className="inline-flex items-center space-x-12 px-12 py-8 glass rounded-3xl border border-white/10">
-              <div className="text-center group">
-                <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
-                  3+
-                </div>
-                <div className="text-sm text-gray-400 font-medium">
-                  Years Experience
-                </div>
-              </div>
-              <div className="w-px h-16 bg-white/10"></div>
-              <div className="text-center group">
-                <div className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
-                  10+
-                </div>
-                <div className="text-sm text-gray-400 font-medium">
-                  Technologies
-                </div>
-              </div>
-              <div className="w-px h-16 bg-white/10"></div>
-              <div className="text-center group">
-                <div className="text-5xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
-                  4
-                </div>
-                <div className="text-sm text-gray-400 font-medium">
-                  Major Projects
-                </div>
-              </div>
+          <div className="mt-12 flex justify-center gap-12">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-1">3+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-1">10+</div>
+              <div className="text-sm text-gray-600">Technologies</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-1">4</div>
+              <div className="text-sm text-gray-600">Major Projects</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section ref={contactRef} className="relative py-32 z-10">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Let's Build Something Amazing
-            </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-400 mt-6 max-w-2xl mx-auto">
-              Ready to innovate? Whether it's AI-powered solutions, enterprise
-              automation, or cutting-edge web applications, let's create
-              technology that makes a real difference.
-            </p>
-          </div>
+      <section ref={contactRef} className="py-20 px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">
+            Let's Build Something Amazing
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Ready to innovate? Let's create technology that makes a real
+            difference.
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
             <a
               href="mailto:rifaii.mohameed@gmail.com"
-              className="group relative perspective-card"
+              className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-colors text-center"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-              <div className="relative p-8 glass rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 text-center">
-                <div className="inline-flex p-5 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 text-white mb-6 group-hover:scale-110 transition-transform shadow-2xl">
-                  <Mail className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Email</h3>
-                <p className="text-gray-400 group-hover:text-blue-400 transition-colors break-words">
-                  rifaii.mohameed@gmail.com
-                </p>
+              <div className="inline-flex p-3 bg-blue-100 text-blue-600 rounded-lg mb-4">
+                <Mail className="w-6 h-6" />
               </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Email</h3>
+              <p className="text-gray-600 text-sm break-words">
+                rifaii.mohameed@gmail.com
+              </p>
             </a>
 
             <a
               href="https://github.com/meedrifai"
-              className="group relative perspective-card"
+              className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-colors text-center"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-              <div className="relative p-8 glass rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 text-center">
-                <div className="inline-flex p-5 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white mb-6 group-hover:scale-110 transition-transform shadow-2xl">
-                  <Github className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3">GitHub</h3>
-                <p className="text-gray-400 group-hover:text-purple-400 transition-colors">
-                  @meedrifai
-                </p>
+              <div className="inline-flex p-3 bg-blue-100 text-blue-600 rounded-lg mb-4">
+                <Github className="w-6 h-6" />
               </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">GitHub</h3>
+              <p className="text-gray-600 text-sm">@meedrifai</p>
             </a>
 
             <a
               href="https://linkedin.com/in/mohamed-rifai-2411b8263"
-              className="group relative perspective-card"
+              className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-colors text-center"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-              <div className="relative p-8 glass rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 text-center">
-                <div className="inline-flex p-5 rounded-2xl bg-gradient-to-r from-pink-500 to-orange-500 text-white mb-6 group-hover:scale-110 transition-transform shadow-2xl">
-                  <Linkedin className="w-7 h-7" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3">LinkedIn</h3>
-                <p className="text-gray-400 group-hover:text-pink-400 transition-colors">
-                  Mohamed Rifai
-                </p>
+              <div className="inline-flex p-3 bg-blue-100 text-blue-600 rounded-lg mb-4">
+                <Linkedin className="w-6 h-6" />
               </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">LinkedIn</h3>
+              <p className="text-gray-600 text-sm">Mohamed Rifai</p>
             </a>
           </div>
 
           <div className="text-center">
-            <div className="inline-flex items-center space-x-3 px-8 py-4 glass rounded-full border border-white/10">
-              <MapPin className="w-6 h-6 text-blue-400" />
-              <span className="text-gray-300 text-lg">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white rounded-full border border-gray-200">
+              <MapPin className="w-4 h-4 text-blue-600" />
+              <span className="text-gray-600 text-sm">
                 Based in Casablanca, Morocco
               </span>
             </div>
@@ -893,55 +498,31 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative py-16 z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-            <div className="flex items-center space-x-4 mb-6 md:mb-0">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-                <div className="relative text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  MR
-                </div>
-              </div>
-              <div className="text-gray-400">
-                © 2025 Mohamed Rifai. Building the future with code & AI.
-              </div>
+      <footer className="py-8 px-6 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="text-gray-600 text-sm mb-4 md:mb-0">
+              © 2025 Mohamed Rifai. All rights reserved.
             </div>
-
             <div className="flex items-center space-x-6">
               <a
                 href="mailto:rifaii.mohameed@gmail.com"
-                className="group relative"
-                aria-label="Email"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-                <div className="absolute -inset-2 bg-blue-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Mail className="relative w-6 h-6 text-gray-400 group-hover:text-blue-400 group-hover:scale-125 transition-all" />
+                <Mail className="w-5 h-5" />
               </a>
               <a
                 href="https://github.com/meedrifai"
-                className="group relative"
-                aria-label="GitHub"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-                <div className="absolute -inset-2 bg-purple-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Github className="relative w-6 h-6 text-gray-400 group-hover:text-purple-400 group-hover:scale-125 transition-all" />
+                <Github className="w-5 h-5" />
               </a>
               <a
                 href="https://linkedin.com/in/mohamed-rifai-2411b8263"
-                className="group relative"
-                aria-label="LinkedIn"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-                <div className="absolute -inset-2 bg-pink-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
-                <Linkedin className="relative w-6 h-6 text-gray-400 group-hover:text-pink-400 group-hover:scale-125 transition-all" />
+                <Linkedin className="w-5 h-5" />
               </a>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-white/5 text-center">
-            <div className="flex flex-wrap justify-center items-center space-x-2 text-sm text-gray-500">
-              <span>Crafted with</span>
-              <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-              <span>using React, Tailwind CSS & Lucide Icons</span>
             </div>
           </div>
         </div>
